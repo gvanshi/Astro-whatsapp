@@ -1,6 +1,7 @@
 const express = require('express');
 const { MongoClient } = require('mongodb');
 const dotenv = require('dotenv');
+const path = require('path');
 
 dotenv.config();
 
@@ -9,6 +10,9 @@ const PORT = process.env.PORT || 3000;
 
 // Middleware to parse JSON bodies
 app.use(express.json());
+
+// Middleware to serve static files (like your HTML file)
+app.use(express.static(path.join(__dirname, 'public'))); // Assuming you have a 'public' directory for static files
 
 // MongoDB connection setup
 const uri = `mongodb+srv://vanshika2021cs017:${process.env.DB_PASSWORD}@cluster0.q9dtt.mongodb.net/?retryWrites=true&w=majority`;
@@ -101,5 +105,3 @@ module.exports = {
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
-
-
