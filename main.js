@@ -8,25 +8,25 @@ const { getAllowedNumbers, getPaidNumbers } = require('./server');
 dotenv.config();
 
 // Import service handlers for redirection
-const { getHoroscope } = require('./horoscope');
-const { handleNumerology } = require('./numerology');
-const { getBirthChart } = require('./birthChart');
-const { handleNameCorrection } = require('./nameCorrection');
-const { handleLuckyDatesAndTimes } = require('./luckyDatesAndTimes');
-const { handleRelationshipCompatibility } = require('./relationshipCompatibility');
-const { handleDetailedVastuConsultation } = require('./vastuConsultation');
-const { handlePersonalizedRemediesByDOB } = require('./remedies');
-const { handleAnnualAndMonthlyPredictions } = require('./predictions');
-const { handleHealthAndWellnessPredictions } = require('./healthAndWellness');
-const { handleCareerGuidance } = require('./careerGuidance');
-const { handleMobileAndEmailAnalysis } = require('./mobileEmailAnalysis');
-const { handleMoonPhaseAstrology } = require('./moonPhaseAstrology');
-const { calculateLifePathNumber } = require('./numerologyUtils');
-const { handleGemstoneRecommendations } = require('./gemstoneRecommendations');
-const { handleSpiritualGuidance } = require('./spiritualGuidance');
-const { handleParentingTips } = require('./parentingTips');
-const { handleAstrologicalEventNotifications } = require('./astrologicalEvents');
-const { handleDetailedAffirmations } = require('./detailedAffirmations');
+const { getHoroscope } = require('./Services/horoscope');
+const { handleNumerology } = require('./Services/numerology');
+const { getBirthChart } = require('./Services/birthChart');
+const { handleNameCorrection } = require('./Services/nameCorrection');
+const { handleLuckyDatesAndTimes } = require('./Services/luckyDatesAndTimes');
+const { handleRelationshipCompatibility } = require('./Services/relationshipCompatibility');
+const { handleDetailedVastuConsultation } = require('./Services/vastuConsultation');
+const { handlePersonalizedRemediesByDOB } = require('./Services/remedies');
+const { handleAnnualAndMonthlyPredictions } = require('./Services/predictions');
+const { handleHealthAndWellnessPredictions } = require('./Services/healthAndWellness');
+const { handleCareerGuidance } = require('./Services/careerGuidance');
+const { handleMobileAndEmailAnalysis } = require('./Services/mobileEmailAnalysis');
+const { handleMoonPhaseAstrology } = require('./Services/moonPhaseAstrology');
+const { calculateLifePathNumber } = require('./Services/numerologyUtils');
+const { handleGemstoneRecommendations } = require('./Services/gemstoneRecommendations');
+const { handleSpiritualGuidance } = require('./Services/spiritualGuidance');
+const { handleParentingTips } = require('./Services/parentingTips');
+const { handleAstrologicalEventNotifications } = require('./Services/astrologicalEvents');
+const { handleDetailedAffirmations } = require('./Services/detailedAffirmations');
 
 // MongoDB connection string
 const uri = `mongodb+srv://vanshika2021cs017:${process.env.DB_PASSWORD}@cluster0.q9dtt.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
