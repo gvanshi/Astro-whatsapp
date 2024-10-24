@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Phone Numbers</title>
-    <!-- <script>
+    <script>
         // Function to handle form submission
         async function submitForm(event) {
             event.preventDefault(); // Prevent the default form submission behavior
@@ -58,19 +58,8 @@
                 alert('Error adding allowed or paid number.');
             }
         }
-    </script> -->
-
-
-    <script>
-        async function fetchTest() {
-            const response = await fetch('/api/test');
-            const data = await response.text(); // Expecting text response
-            console.log(data); // This should log "API is working"
-        }
-    
-        fetchTest();
     </script>
-    </head>
+</head>
 <body>
     <h1>Add Phone Numbers</h1>
     <form onsubmit="submitForm(event)">
