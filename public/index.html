@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Phone Numbers</title>
+    <script>
+        // Function to handle form submission
+        async function submitForm(event) {
+            event.preventDefault(); // Prevent the default form submission behavior
+            
+            const allowedNumberInput = document.getElementById('allowed-number').value.trim(); // Get the allowed number input
+            const paidNumberInput = document.getElementById('paid-number').value.trim(); // Get the paid number input
+
+            // Validate allowed number
+            if (!/^\d{10}$/.test(allowedNumberInput)) { // Check if the input is a 10-digit number
+                alert('Please enter a valid 10-digit allowed phone number.');
+                return;
+            }
+
+            // Validate paid number
+            if (!/^\d{10}$/.test(paidNumberInput)) { // Check if the input is a 10-digit number
+                alert('Please enter a valid 10-digit paid phone number.');
+                return;
+            }
+
+            // Format the numbers
+            const formattedAllowedNumber = `91${allowedNumberInput}@c.us`; // Prepend country code and append '@c.us'
+            const formattedPaidNumber = `91${paidNumberInput}@c.us`; // Prepend country code and append '@c.us'
+
+            // Send requests to the server
+            try {
+                const allowedResponse = await fetch('/add-allowed-number', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ number: formattedAllowedNumber })
+                });
+
+                const paidResponse = await fetch('/add-paid-number', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ number: formattedPaidNumber })
+                });
+
+                if (allowedResponse.ok && paidResponse.ok) {
+                    alert('Allowed and paid numbers added successfully.');
+                    document.getElementById('allowed-number').value = ''; // Clear the allowed number input field
+                    document.getElementById('paid-number').value = ''; // Clear the paid number input field
+                } else {
+                    alert('Error adding allowed or paid number.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error adding allowed or paid number.');
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Add Phone Numbers</h1>
+    <form onsubmit="submitForm(event)">
+        <label for="allowed-number">Allowed Phone Number:</label>
+        <input type="text" id="allowed-number" placeholder="Enter 10-digit allowed number" required>
+        
+        <label for="paid-number">Paid Phone Number:</label>
+        <input type="text" id="paid-number" placeholder="Enter 10-digit paid number" required>
+        
+        <button type="submit">Add Numbers</button>
+    </form>
+</body>
+</html>
